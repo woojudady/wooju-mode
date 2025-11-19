@@ -247,8 +247,6 @@ Installation is not required — Wooju Mode is prompt-based.
 
 The repository is organized to cleanly separate the public prompt, documentation, modules, and localized README files.
 
-```text
-/
  ├─ README.md                 # English Full Version (default)
  ├─ README-KR.md              # Korean Full Version
  ├─ wooju_infinite_prompt.txt # Public prompt version of Wooju Mode OS ∞
