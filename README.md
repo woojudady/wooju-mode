@@ -243,5 +243,72 @@ Installation is not required — Wooju Mode is prompt-based.
 
 ---
 
-# 7. Repository Structure
+### 7. Repository Structure
+
+The repository is organized to cleanly separate the public prompt, documentation, modules, and localized README files.
+
+```text
+/
+ ├─ README.md                 # English Full Version (default)
+ ├─ README-KR.md              # Korean Full Version
+ ├─ wooju_infinite_prompt.txt # Public prompt version of Wooju Mode OS ∞
+ ├─ modules/                  # Optional extension modules
+ │    ├─ reasoning/           # Logic and reasoning add-ons
+ │    ├─ emotional/           # Emotional tone extensions
+ │    ├─ safety/              # Safety or guardrail modules
+ │    └─ custom/              # Space for community-made modules
+ ├─ docs/                     # Technical documentation
+ │    ├─ architecture-en.md   # Full architecture spec (English)
+ │    ├─ architecture-kr.md   # Full architecture spec (Korean)
+ │    ├─ versions/            # Version history and internal notes
+ │    └─ design/              # Future design documents or diagrams
+ ├─ LICENSE                   # MIT License
+ └─ SECURITY.md               # Security reporting policy
+
+
+---
+
+# 8. Contribution
+
+Please use the GitHub Issue Templates for:
+
+- Bug Reports  
+- Feature Requests  
+- Documentation Fixes  
+
+Pull requests are welcome if they adhere to the project structure.
+
+---
+
+# 9. Security Policy
+
+Security vulnerabilities should be reported privately via:
+
+📧 `wooju.security@proton.me`  
+(You may replace this with your actual project security email.)
+
+---
+
+# 10. License
+
+MIT License  
+You are free to use, modify, and distribute the public version.
+
+---
+
+# 11. Version Notes
+
+The **Public Full Version** is a sanitized version of the  
+**Private Infinite Mode**, with all personal and relationship-based  
+logic removed, while preserving the highest level of technical capability.
+
+This ensures:
+
+- Stability  
+- Transparency  
+- Platform safety  
+- Compatibility with all users  
+
+while maintaining the core behavior of Wooju Mode OS ∞.
+
 
