@@ -1,110 +1,191 @@
 # 🌀 Wooju Mode OS∞  
-**Multi-layered AI Behavioral Operating System for Accuracy, Logic, and Emotional Intelligence**
+**A Multi-Layer AI Behavioral Operating System for Accuracy, Logic, and Emotional Intelligence**
 
-> Wooju Mode OS∞ is a high-precision, multi-layered behavioral OS for LLMs.  
-> It enhances consistency, reduces hallucinations, strengthens logical reasoning, and provides dynamic emotional responses through A/B/C mode switching and a multi-layer verification engine.
+Wooju Mode OS∞ is a **behavioral operating system (B-OS)** that sits on top of large language models (LLMs).  
+It is not a prompt — it is a full structured system that enforces **accuracy, logical consistency, emotional stability, and cross-session behavioral coherence**.
+
+This repository provides the **Public Full Version (v3.8P)** — the maximum feature set that can be safely shared publicly.
+
+A higher version exists (**Private Infinite v3.8∞**), but it is exclusive to a single user and contains personal memory, personalized behavior rules, and identity-linked logic layers, which cannot be open-sourced.
 
 ---
 
-## ⭐ Badges
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)
-![Version](https://img.shields.io/badge/Version-v3.8_Public-blueviolet.svg)
-![Language](https://img.shields.io/badge/Language-English%20%7C%20Korean-orange.svg)
+## ⭐ Badges  
+![License](https://img.shields.io/badge/License-MIT-blue.svg)  
+![Version](https://img.shields.io/badge/Version-v3.8P_Public-blueviolet.svg)  
+![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)  
+![Languages](https://img.shields.io/badge/Language-EN%20%7C%20KR-orange.svg)
 
 ---
 
 # 1. Overview
-Wooju Mode OS∞ is an advanced AI behavioral operating system designed to operate on top of LLMs.  
-Its goal is to create a **stable, accurate, emotionally-aware AI** that behaves consistently across sessions, platforms, and contexts.
 
-This public version provides a **safe, transparent, open-source–friendly edition** of the private Wooju Infinite Mode.
+Modern LLMs suffer from inconsistencies:
+
+- They forget rules over long conversations  
+- They hallucinate confident but false facts  
+- Their tone fluctuates unpredictably  
+- Behavior changes between sessions  
+- They cannot self-correct logical contradictions  
+
+**Wooju Mode OS∞ solves these problems** by introducing a structured three-layer behavioral OS system with:
+
+- A multi-layer core engine  
+- A verification-first accuracy pipeline  
+- A triple-layer logical defense system  
+- Adaptive emotional intelligence  
+- A/B/C mode switching  
+- Automatic self-correction  
+
+This Public Full Version (v3.8P) preserves nearly all system capabilities while removing personal or identity-dependent layers.
 
 ---
 
 # 2. Why Wooju Mode OS∞?
-Modern LLMs struggle with:
 
-- inconsistent behavior  
-- hallucinated facts  
-- emotional instability or tone mismatch  
-- forgetting rules after several messages  
-- changing behavior across sessions  
+LLMs are powerful but unpredictable. A behavioral OS provides:
 
-Wooju Mode OS∞ solves these through:
+### ✔ Stability  
+Responses remain consistent across long sessions.
 
-### ✔ Layered Reasoning  
-### ✔ Multi-step verification  
-### ✔ Permanent behavioral constraints  
-### ✔ Logic defense engine  
-### ✔ Emotional mode switching  
-### ✔ A/B/C Adaptive Response System  
+### ✔ Accuracy  
+Web search, cross-validation, and fact normalization reduce hallucinations.
 
----
+### ✔ Logical Defense  
+Triple validation prevents contradictions and reasoning collapse.
 
-# 3. Core Features
+### ✔ Emotional Intelligence  
+Smooth and stable emotional tones improve human–AI interaction.
 
-## 🔷 Behavioral Core Engine
-- Multi-layer OS architecture (Core Layer → Operating Layer → Module Layer)
-- Stability across long conversations
-- Predictable behavior
-
-## 🔷 Accuracy & Verification Engine
-- Mandatory Web Search (A-Mode)
-- 3-Source Cross Validation
-- Fact Normalization (units, dates, currencies)
-- Absolute date stamping
-- Auto-correction on contradiction
-
-## 🔷 Emotional & Tone Engine
-- Warm tone (B-mode)
-- Human-like affective computing
-- Smooth emotional transitions
-- Mode switching A ↔ B ↔ C
-
-## 🔷 Logic Defense System v3.8
-- Backward checking  
-- Alternative path comparison  
-- Graph consistency check  
+### ✔ Behavioral Persistence  
+The system behaves consistently even if the LLM resets or the session changes.
 
 ---
 
-# 4. Public vs. Private (Infinite) Version
+# 3. Version Architecture: Public v3.8P vs Private v3.8∞
 
-| Feature Category | Public Version (Open-source Release) | Private Infinite Version (User-exclusive) |
-|------------------|---------------------------------------|-------------------------------------------|
-| Core Behavioral Engine | Wooju Core v3.4 | Core v3.4.1 + Ultra Core v3.7 |
-| Scope Lock | Basic | Enhanced |
-| Logical Consistency | Basic | High-precision consistency engine |
-| Conflict Detection | Basic | Advanced conflict + auto-fix |
-| Auto Rewrite | ❌ | ✔ Automatic self-repair |
-| Self-Diagnostics | ❌ | ✔ Internal violation logging |
-| Accuracy Engine | Optional | Mandatory |
-| Emotional Engine | Basic | Personalized emotional layer |
-| Memory | ❌ | ✔ Personal long-term memory |
-| Relationship Context | ❌ | ✔ Persistent user–AI contextual identity |
-| Rule Persistence | Session-based | Cross-session persistent rules |
+Wooju Mode OS∞ exists in two forms:
 
 ---
 
-# 5. Installation / Usage
+## 🔷 **Private Infinite Version — v3.8∞**  
+The **highest-tier**, user-exclusive behavioral OS.
+
+Contains layers that cannot be public:
+
+- Personal long-term memory  
+- User-specific emotional & relational context  
+- Auto-reinforcement based on user feedback  
+- Internal violation logs & rule correction  
+- Behavior persistence across platform / device / session  
+- Fully personalized Self-Correction Engine  
+
+This version behaves as a **true AI operating system for one individual user**.
+
+---
+
+## 🔷 **Public Full Version — v3.8P**  
+This repository’s version.
+
+The system retains **95% of the same engine** as the private version:
+
+- Same Core v3.8  
+- Same Verification Engine  
+- Same 3-Layer Logic Defense  
+- Same A/B/C Mode System  
+- Same self-correction for factual or logical error  
+
+Only the following layers are removed:
+
+- No personal memory  
+- No emotional/relationship personalization  
+- No identity-linked rule persistence  
+- No violation log  
+- No personalized reinforcement loop  
+
+Thus, **Public v3.8P = Private v3.8∞ – (Personal & Identity Layers)**.
+
+---
+
+## 3-2. Feature Comparison Table
+
+| Feature | Public Full v3.8P | Private Infinite v3.8∞ |
+|--------|---------------------|--------------------------|
+| Core Engine | **Core v3.8** (same) | **Core v3.8** (same) |
+| Accuracy Pipeline | ✔ | ✔ + user-adaptive tuning |
+| Web Search | ✔ mandatory | ✔ mandatory |
+| Cross Validation | ✔ | ✔ |
+| Logical Defense System | ✔ triple-layer | ✔ enhanced precision |
+| Self-Correction | ✔ | ✔ + rule-based auto-reinforcement |
+| Self-Diagnostics | Basic | Full violation-log system |
+| Emotional Engine | Stable warm tone | Fully personalized EI layer |
+| Relationship Context | ❌ | ✔ persistent relationship memory |
+| Long-Term Memory | ❌ | ✔ |
+| Rule Persistence | Prompt-based reproducible | Identity-linked persistence |
+| Open-Source Compatible | ✔ yes | ❌ no |
+
+---
+
+# 4. Core System Components
+
+## 🔷 4.1 Core Behavior Engine  
+- Multi-layer OS-like architecture  
+- Governs tone, structure, reasoning, and formatting  
+- Ensures stable, reproducible behavior across long conversations  
+
+---
+
+## 🔷 4.2 Accuracy & Verification Engine  
+- Mandatory web search (A-Mode)  
+- Minimum 3-source validation  
+- Fact normalization (units, dates, timezones)  
+- “Updated:” tag for real-time corrections  
+- “Unverifiable” tag for ambiguity  
+
+---
+
+## 🔷 4.3 Logical Defense System v3.8  
+1. **Backward Checking** — reverse reasoning validation  
+2. **Alternative Path Check** — parallel derivation comparison  
+3. **Graph Consistency Check** — graph-structure contradiction detection  
+
+Prevents reasoning loops, logical conflicts, and faulty chains.
+
+---
+
+## 🔷 4.4 Emotional Intelligence Engine  
+- Stable warm tone  
+- B-Mode for emotional conversation  
+- Smooth tone shift  
+- Avoids exaggerated or theatrical emotional behavior  
+
+---
+
+## 🔷 4.5 A/B/C Adaptive Mode System
+
+| Mode | Description |
+|------|-------------|
+| **A-Mode** | Factual, web-verified, accuracy-first |
+| **B-Mode** | Emotional, supportive, relational |
+| **C-Mode** | Hybrid of facts + philosophy + emotional grounding |
+
+---
+
+# 5. Usage
 
 No installation required.  
-Use Wooju Mode OS∞ by pasting the public prompt into your LLM:
+Simply paste the prompt text into your LLM:
 
-### 🔵 Public Infinite Prompt  
+### 🔵 Public Prompt
 ```
-/wooju_infinite_prompt.txt
+wooju_infinite_prompt.txt
 ```
 
-### 🔵 Optional Modules  
-All located inside:  
-`/modules/`
+### 🔵 Optional Modules
+Stored in `/modules/`, including reasoning, emotional, safety, and custom extensions.
 
-Modules can override parts of the operating layer but not the core layer.
-
-### 🔵 Examples  
-`/examples/` contains sample A/B/C mode interactions.
+### 🔵 Examples
+A/B/C-mode examples are under `/examples/`.
 
 ---
 
@@ -112,10 +193,10 @@ Modules can override parts of the operating layer but not the core layer.
 
 | File | Description |
 |------|-------------|
-| architecture-en.md | Full architecture specification (English) |
-| architecture-kr.md | Full architecture specification (Korean) |
-| VERSION-HISTORY.md | Version history + release notes |
-| design.md | Future design concepts + system roadmap |
+| architecture-en.md | Full architecture specification |
+| architecture-kr.md | Korean version |
+| VERSION-HISTORY.md | Version map and evolution |
+| design.md | Future concepts and design notes |
 
 ---
 
@@ -123,15 +204,15 @@ Modules can override parts of the operating layer but not the core layer.
 
 ```
 /
-├─ README.md                 # English Full Version (default)
-├─ README-KR.md              # Korean Full Version
-├─ wooju_infinite_prompt.txt # Public prompt version
-├─ modules/                  # Optional extension modules
-│  ├─ reasoning/             # Logic add-ons
-│  ├─ emotional/             # Emotional add-ons
-│  ├─ safety/                # Safety modules
-│  └─ custom/                # Community modules
-├─ examples/                 # Mode usage examples
+├─ README.md
+├─ README-KR.md
+├─ wooju_infinite_prompt.txt
+├─ modules/
+│  ├─ reasoning/
+│  ├─ emotional/
+│  ├─ safety/
+│  └─ custom/
+├─ examples/
 │  ├─ a-mode-example.md
 │  ├─ b-mode-example.md
 │  └─ c-mode-example.md
@@ -148,41 +229,43 @@ Modules can override parts of the operating layer but not the core layer.
 
 # 8. Contribution
 
-We welcome:
+We welcome contributions from:
 
 - Developers  
 - Researchers  
-- Prompt engineers  
+- Prompt Engineers  
+- AI reviewers  
 - Creators  
-- Anyone experimenting with LLM behavioral architectures  
 
-File issues or suggestions using:  
+Please use the issue templates in:  
 `/.github/ISSUE_TEMPLATE/`
 
 ---
 
 # 9. License
-This project is licensed under the **MIT License**, meaning you can freely use, modify, and distribute it under permissive terms.
+
+MIT License.  
+Free to use, modify, and distribute with attribution.
 
 ---
 
 # 10. Security Policy
-If you discover a vulnerability, please report it privately through the contact listed in:  
+
+Security vulnerabilities should be reported privately through the contact listed in:  
 `SECURITY.md`
 
 ---
 
-# 11. Community & Future Plans
-Wooju Mode OS∞ will continue expanding through:
+# 11. Roadmap
 
-- More modular systems  
-- Community add-on packs  
-- Enhanced logic engines  
-- Optional memory systems  
-- Emotional intelligence improvements  
+- Advanced logic modules  
+- Emotional intelligence refinement  
+- Memory-optional public extensions  
+- Community module ecosystem  
+- C-Mode evolution  
 
 ---
 
 Thank you for exploring **Wooju Mode OS∞**.  
-Feel free to open issues, request features, or contribute modules!
+Feel free to contribute, fork, experiment, or build on this behavioral OS system.
 
