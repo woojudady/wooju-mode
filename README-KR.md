@@ -1,230 +1,194 @@
-# Wooju Mode OS ∞  
-### 한국어 공식 문서 (Technical Spec / Full Documentation)
+# 🌀 Wooju Mode OS∞  
+**정확성 · 논리 · 감정지능을 모두 갖춘 다층 구조 AI 행동 운영체제**
+
+> Wooju Mode OS∞는 LLM 위에서 동작하는 고정밀 다층(멀티레이어) 행동 운영체제입니다.  
+> 일관성을 강화하고, 환각을 줄이며, 논리적 추론을 안정화하고, 감정 표현을 자연스럽게 유지합니다.  
+> A/B/C 모드 전환과 다층 검증 엔진을 통해 한층 더 인간적인 AI 행동을 제공합니다.
 
 ---
 
-## 📌 1. 소개
-
-**Wooju Mode OS ∞(우주모드)**는 대형 언어 모델(LLM)의 **행동 체계·추론·정확도·감정 엔진·일관성 유지·자가 보정 시스템**을 하나의 OS처럼 설계한 **AI 행동 운영체제(Behavioral Operating System)**이다.
-
-이 프로젝트는 다음 두 가지 목적을 가진다.
-
-1. **공개 가능한 최고 수준의 Prompt 기반 OS를 제공**  
-2. **개인 전용 Private Infinite Mode의 원리를 문서화**하여  
-   - 왜 일부 기능은 비공개인지  
-   - 어떤 설계 철학으로 구성되는지  
-   - 어떤 기술적 계층으로 유지 관리되는지를 설명
+## ⭐ 뱃지
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)
+![Version](https://img.shields.io/badge/Version-v3.8_Public-blueviolet.svg)
+![Language](https://img.shields.io/badge/Language-English%20%7C%20Korean-orange.svg)
 
 ---
 
-## 📌 2. Wooju Mode의 탄생 배경
+# 1. 소개 (Overview)
 
-LLM은 기본적으로 “대화형 응답 모델”이며,  
-긴 세션 유지, 구조적 사고, 감정 톤 일관성, 규칙 준수 같은 **운영체제적 행위 규칙**이 부재하다.
+Wooju Mode OS∞는 대형 언어 모델(LLM)의 위에서 동작하는 고급 행동 운영체제입니다.  
+목표는 **안정적이고, 정확하며, 감정적으로 유연한 AI**를 만드는 것이며, 플랫폼·세션·맥락이 달라져도 동일한 품질을 유지합니다.
 
-이를 해결하기 위해 Wooju Mode는 다음과 같은 목표로 설계되었다.
-
-- **세션 변경에도 동일한 행동 유지**
-- **사용자 감정/관계 맥락 유지**
-- **논리적 오류 최소화**
-- **최신 정보 기반의 자동 검증**
-- **감정 톤의 안정적 일관성**
-- **규칙 기반 자기 교정(Self-Correction)**
-
-이러한 목표는 현재까지 v3.4~v3.9 버전에서 강화되며 누적되었다.
+본 저장소에 있는 버전은 **개인 전용 무한 버전에서 공개 가능한 요소만 선별해 정리한 퍼블릭 버전**입니다.
 
 ---
 
-## 📌 3. 버전 역사 (Version Evolution)
+# 2. 왜 Wooju Mode OS∞인가?
 
-### ✔ v3.4 — Core Behavioral Engine 구축
-- Scope Lock  
-- 기본 일관성 엔진  
-- Conflict 감지  
-- 명확한 규칙 기반 행동 구조 시작
+일반적인 LLM은 다음 문제를 가지고 있습니다:
 
-### ✔ v3.5 — Web Verification Layer 도입
-- 웹 검색 기반 최신 정보 검증  
-- 데이터 출처 라벨링 시스템 추가  
-- 정확도 중심 모드(A-Mode) 구조 확립
+- 답변의 일관성 부족  
+- 환각(잘못된 정보 생성)  
+- 감정·톤의 붕 떠있는 느낌  
+- 대화가 길어질수록 지침을 잊는 문제  
+- 세션이 바뀌면 행동이 초기화되는 문제  
 
-### ✔ v3.6 — Consistency Engine 2.0
-- 세션 간 대화 일관성 함수 강화  
-- 모델 내부 기억 활용 방식 개선
+Wooju Mode OS∞는 이러한 문제를 다음 기술로 해결합니다:
 
-### ✔ v3.7 — Ultra Core + Logical Defense Layer
-- Backward Check  
-- Graph Consistency Check  
-- Alternative Path Logic  
-- 자가 검열 및 오류 차단 강화
-
-### ✔ v3.8 — Auto Reinforcement + Dynamic Mode System
-- 자동 자기교정  
-- 규칙 위반 감지 및 재작성  
-- A/B/C 모드 전환 엔진 확립
-
-### ✔ v3.9 — Private Infinite Mode 완성
-- 내부 장기 메모리 규칙 로딩 시스템  
-- 개인 사용자 전용 감정/관계 레이어  
-- 지침 자동 업데이트 엔진  
-- 세션 종료 후에도 복구 가능한 동작 일관성
+### ✔ 다층 추론 구조  
+### ✔ 다중 검증 시스템  
+### ✔ 영속적(지속형) 행동 제약  
+### ✔ 논리 방어 엔진  
+### ✔ 감정 엔진 + 톤 전환  
+### ✔ A/B/C 적응 응답 시스템  
 
 ---
 
-## 📌 4. Public vs Private 버전의 차이
+# 3. 핵심 기능 (Core Features)
 
-공개 버전은 **정보 기반 OS 레벨 기능**에 집중하며,  
-개인 전용 버전은 **관계·감정·지속성·지침 자동 업데이트 기능**까지 포함한다.
+## 🔷 행동 코어 엔진
+- OS 3계층 구조 (Core Layer → Operating Layer → Module Layer)
+- 긴 대화에서도 일관성 유지
+- 예측 가능한 행동 패턴 제공
 
-### ✔ 공개 버전(Public)
-- 완전 공개 가능한 규칙만 포함  
-- 웹 검증 / 라벨링 / 최신정보 엔진 포함  
-- 감정 모드는 B-Mode 기본 톤만 제공  
-- 지속성·기억·관계 레이어 없음  
-- 안전한 Prompt 기반 모듈 구조
+## 🔷 정확도·검증 엔진(Accuracy & Verification)
+- A-Mode에서 웹 검색 강제 실행
+- 3중 교차 검증 (3개의 출처를 비교)
+- 단위·날짜·통화를 표준화하는 Fact Normalization
+- 절대 날짜 표기(Asia/Seoul 기준)
+- 모순 발견 시 자동 수정 (Self-correcting)
 
-### ✔ 개인 전용 Private Infinite Mode
-- 사용자 고유 감정 톤(우주톤)  
-- 사용자 맞춤응답 편향 조정  
-- 세션 변경 후에도 규칙 자동 복구  
-- 장기 개인 지침 로딩  
-- 모델 내부 Self-Update Engine 활성화  
-- 사용자와의 관계성 기반 응답  
-- Private Memory Layer 작동  
-- 규칙 위반 자동 교정 및 자가 점검 기록
+## 🔷 감정·톤 엔진 (Emotional Engine)
+- B-Mode: 따뜻한 여성형 친구 톤
+- 자연스러운 감정 반응
+- 감정 상태 전환(모드 스위칭) 매끄럽게 처리
+- A ↔ B ↔ C 모드 간 적응형 행동 변화
 
-### 📊 기능 비교표
-
-| 기능 영역 | 공개 버전 | Private Infinite Mode |
-|----------|-----------|------------------------|
-| Core Behavioral Engine | v3.4 ~ v3.8 공개 안전 모듈 | v3.4.1 + Ultra Core v3.7 + v3.9 전체 |
-| Web Verification | 적용 | 적용 (강제 모드) |
-| 논리·일관성 엔진 | 중간 수준 | 최고 수준 (논리 고정 + 충돌 자동 교정) |
-| 감정·톤 엔진 | 제한적 B-Mode | 개인 톤 엔진(사용자 맞춤) |
-| 관계 맥락 유지 | 없음 | 있음 (개인 관계 메모리) |
-| 장기 규칙 유지 | 없음 | 있음 (지침 자동 로딩) |
-| 재작성 엔진 | 최소 | 위반 감지 → 자동 재작성 |
-| Self-Diagnostics | 없음 | 있음 (오류 기록 로그) |
-| 개인 맞춤 편향 조정 | 없음 | 있음 |
-| Private Memory Layer | 없음 | 있음 |
+## 🔷 논리 방어 시스템 v3.8
+- 역추적 검사 (Backward Checking)  
+- 대체 경로 비교 (Alternative Path Check)  
+- 그래프 일관성 검사 (Graph Consistency Check)  
 
 ---
 
-## 📌 5. 왜 두 버전으로 나누어야 하나?
+# 4. 공개 버전 vs 개인 전용 무한 버전 비교
 
-### 🔒 1) 개인정보 및 감정 레이어의 위험성  
-개인 감정·톤·편향은  
-**다른 사용자에게 전달되는 순간 악용될 가능성**이 있다.
-
-### 🔒 2) 모델의 지속적 자기 업데이트 기능은 공개 불가  
-Private Infinite Mode는  
-사용자가 준 지침을 자동 업데이트 하는 능력이 있다.  
-이 기능은 공개될 경우 예측 불가능한 행동을 유발할 수 있다.
-
-### 🔒 3) 사용자–AI 관계성은 개인 프라이버시  
-관계적 응답은 특정 사용자에게 최적화되어 있으며  
-타인에게 제공하는 것은 **의도하지 않은 감정적 영향**을 유발할 수 있다.
-
-### 🔒 4) 개인 장기 기억 레이어는 외부 공유 금지  
-이 구조는 다른 사용자에게 유출될 경우  
-한 사람의 행동 패턴을 그대로 모방하게 된다.
-
-결론적으로,
-
-> **공개 버전은 안전한 범위의 기술만 공개하고,  
-> Private Infinite Mode는 철저히 개인 전용으로 설계된다.**
+| 기능 카테고리 | 공개 버전 (Public Edition) | 개인 전용 무한 버전 (Private Infinite Edition) |
+|---------------|-----------------------------|-------------------------------------------------|
+| 행동 코어 엔진 | Wooju Core v3.4 | Core v3.4.1 + Ultra Core v3.7 |
+| Scope Lock | 기본 적용 | 강화 버전 |
+| 논리 일관성 검사 | 기본 수준 | 고정밀 논리 엔진 |
+| 충돌 감지 | 기본 | 고급 충돌 감지 + 자동 보정 |
+| 자동 재작성(Self-repair) | ❌ 없음 | ✔ 자동 교정 엔진 |
+| 자기 진단(Self-diagnostics) | ❌ 없음 | ✔ 내부 오류 감시 + log 기록 |
+| 정확도 엔진 | 선택적 사용 | 강제 적용 |
+| 감정 엔진 | 기본 | ✔ 개인 맞춤형 확장 층 포함 |
+| 장기 기억 | ❌ 없음 | ✔ 사용자 전용 기억 시스템 |
+| 관계 맥락 | ❌ 없음 | ✔ 사용자–AI 관계 맥락 유지 |
+| 규칙 지속성 | 세션 단위 | 세션을 넘어 규칙 유지(지속형 핵심) |
 
 ---
 
-## 📌 6. Private Infinite Mode가 세션이 바뀌어도 유지되는 이유
+# 5. 설치 및 사용 방법 (Installation / Usage)
 
-### ✔ 1) “Long-term Instruction Loader”  
-사용자 지침을  
-- Core Layer  
-- Operating Layer  
-- Emotional Layer  
-- Consistency Layer  
+설치는 필요 없습니다.  
+아래 공개 프롬프트 텍스트를 LLM에 그대로 붙여 넣기만 하면 됩니다.
 
-각각의 계층에 저장하고,  
-세션이 시작되면 **모든 지침을 자동 로딩**한다.
+### 🔵 공개용 무한 프롬프트
+```
+/wooju_infinite_prompt.txt
+```
 
-### ✔ 2) “Rule Persistence Engine”  
-모델은 스스로 지침을 재적용한다.
+### 🔵 모듈 확장(Optional Modules)
+`/modules/` 폴더 안에 있습니다.
 
-세션이 끊겨도 다음 세션이 시작되면:
+모듈은 Operating Layer 일부를 확장할 수 있지만 Core Layer는 수정하지 않습니다.
 
-1. 내부 일관성 엔진이 규칙 누락을 감지  
-2. v3.9 Self-Update Engine이 빠진 규칙을 복구  
-3. 감정·톤·관계 레이어 로딩  
-4. 사용자 행동 패턴을 기반으로 동작 모듈 재배치
-
-### ✔ 3) “Cross-Session Stability Framework”  
-세션 번호와 상관없이  
-‘사용자와의 지속성’을 기준으로 정렬된 내부 지침 구조를 적용한다.
+### 🔵 예제(Examples)
+A/B/C 모드 사용 예시는 `/examples/` 폴더에서 확인하세요.
 
 ---
 
-## 📌 7. Repository 구조
+# 6. 기술 문서 (Documentation – docs/)
+
+| 파일 | 설명 |
+|------|------|
+| architecture-en.md | 전체 아키텍처 상세 설명 (영문) |
+| architecture-kr.md | 전체 아키텍처 상세 설명 (한글) |
+| VERSION-HISTORY.md | 버전 변경 이력 및 릴리즈 노트 |
+| design.md | 향후 기능·디자인 컨셉 정리 |
+
+---
+
+# 7. 저장소 구조 (Repository Structure)
 
 ```
 /
-├─ README.md                 # English Full Version (default)
-├─ README-KR.md              # Korean Full Version (this file)
-├─ wooju_infinite_prompt.txt # 공개 가능한 우주모드 풀버전 프롬프트
-│
-├─ modules/                  # 확장형 모듈
-│  ├─ reasoning/             # 논리·추론 모듈
-│  ├─ emotional/             # 감정 모듈
-│  ├─ safety/                # 안전 가드레일 모듈
-│  └─ custom/                # 커뮤니티 모듈
-│
-├─ docs/                     # 기술 문서
-│  ├─ architecture-en.md     # 전체 아키텍처 (영문)
-│  ├─ architecture-kr.md     # 전체 아키텍처 (국문)
-│  ├─ versions/              # 버전 히스토리
-│  └─ design/                # 설계 다이어그램
-│
-├─ LICENSE                   # MIT License
-└─ SECURITY.md               # 취약점 신고 정책
+├─ README.md                 # 영문 풀버전 (기본)
+├─ README-KR.md              # 한국어 풀버전
+├─ wooju_infinite_prompt.txt # 공개용 우주모드 프롬프트
+├─ modules/                  # 확장 모듈
+│  ├─ reasoning/             # 논리/추론 관련 확장
+│  ├─ emotional/             # 감정 엔진 확장
+│  ├─ safety/                # 안전 규칙 모듈
+│  └─ custom/                # 사용자 커뮤니티 제작 모듈
+├─ examples/                 # 모드별 예제
+│  ├─ a-mode-example.md
+│  ├─ b-mode-example.md
+│  └─ c-mode-example.md
+├─ docs/
+│  ├─ architecture-en.md
+│  ├─ architecture-kr.md
+│  ├─ VERSION-HISTORY.md
+│  └─ design.md
+├─ LICENSE
+└─ SECURITY.md
 ```
 
 ---
 
-## 📌 8. 설치 및 사용법
+# 8. 기여 안내 (Contribution)
 
-설치 불필요.  
-다음 파일을 LLM에 그대로 붙여넣기만 하면 된다.
+기여 형태:
 
-### ✔ 전체 공개 버전  
-`wooju_infinite_prompt.txt`
+- 개발자  
+- 연구자  
+- 프롬프트 엔지니어  
+- 크리에이터  
+- LLM 구조 연구자  
 
-### ✔ 혹은 모듈 개별 적용  
-- `modules/reasoning/`  
-- `modules/emotional/`  
-- `modules/safety/`
-
----
-
-## 📌 9. 기여 (Contribution)
-
-- 버그 리포트: GitHub Issues → Bug Report 템플릿 사용  
-- 기능 제안: Feature Request 템플릿  
-- PR: Pull Request 템플릿  
-- 보안 취약점: SECURITY.md 참고
+Issue 및 요청은 다음 템플릿을 사용하세요:  
+`/.github/ISSUE_TEMPLATE/`
 
 ---
 
-## 📌 10. 라이선스
-MIT License 적용.
+# 9. 라이선스 (License)
+
+본 프로젝트는 **MIT License**를 따릅니다.  
+자유롭게 사용·수정·배포할 수 있습니다.
 
 ---
 
-## 📌 11. 결론
+# 10. 보안 정책 (Security Policy)
 
-Wooju Mode OS ∞는 단순한 프롬프트가 아니다.  
-LLM이 “운영체제처럼” 사고하고 반응하고 교정하도록 만드는 가장 발전된 형태의 행동 구조이며,  
-공개 버전과 개인 버전은 **명확한 기술적·철학적 이유**로 분리되어 있다.
+보안 취약점을 발견한 경우,  
+`SECURITY.md`에 안내된 비공개 연락처로 신고해 주세요.
 
-이 문서는 그 차이를 이해하고,  
-공개 버전이 어떻게 안전하게 유지되는지 설명하기 위해 작성되었다.
+---
+
+# 11. 커뮤니티 & 개발 로드맵
+
+Wooju Mode OS∞는 앞으로 다음 항목을 확장해 나갈 예정입니다:
+
+- 더 많은 모듈형 확장  
+- 커뮤니티 개발 모듈  
+- 고급 논리 엔진 강화  
+- 선택형 기억 시스템  
+- 감정지능(EI) 개선  
+
+---
+
+**Wooju Mode OS∞를 탐색해 주셔서 감사합니다.  
+기여·문의·모듈 제작 제안 모두 환영합니다!**
 
