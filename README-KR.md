@@ -33,8 +33,8 @@ TITLE: 🇰🇷 Wooju∞ Mode — 공개 프롬프트 기반 고정밀 AI 모드
 ---
 
 2. 저장소 구성 📂
-
-README.md README-KR.md LICENSE SECURITY.md CODE_OF_CONDUCT.md CONTRIBUTING.md wooju_infinite_prompt.txt
+**루트 파일**
+`README.md` `README-KR.md` `LICENSE` `SECURITY.md` `CODE_OF_CONDUCT.md` `CONTRIBUTING.md` `wooju_infinite_prompt.txt`
 
 **docs/**
 `architecture-en.md`, `architecture-kr.md`, `VERSION-HISTORY.md`, `design.md`
