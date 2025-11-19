@@ -247,21 +247,27 @@ Installation is not required — Wooju Mode is prompt-based.
 
 The repository is organized to cleanly separate the public prompt, documentation, modules, and localized README files.
 
- ├─ README.md                 # English Full Version (default)
- ├─ README-KR.md              # Korean Full Version
- ├─ wooju_infinite_prompt.txt # Public prompt version of Wooju Mode OS ∞
- ├─ modules/                  # Optional extension modules
- │    ├─ reasoning/           # Logic and reasoning add-ons
- │    ├─ emotional/           # Emotional tone extensions
- │    ├─ safety/              # Safety or guardrail modules
- │    └─ custom/              # Space for community-made modules
- ├─ docs/                     # Technical documentation
- │    ├─ architecture-en.md   # Full architecture spec (English)
- │    ├─ architecture-kr.md   # Full architecture spec (Korean)
- │    ├─ versions/            # Version history and internal notes
- │    └─ design/              # Future design documents or diagrams
- ├─ LICENSE                   # MIT License
- └─ SECURITY.md               # Security reporting policy
+```text
+/
+├─ README.md                   # English Full Version (default)
+├─ README-KR.md                # Korean Full Version
+├─ wooju_infinite_prompt.txt   # Public prompt version of Wooju Mode OS ∞
+│
+├─ modules/                    # Optional extension modules
+│   ├─ reasoning/              # Logic and reasoning add-ons
+│   ├─ emotional/              # Emotional tone extensions
+│   ├─ safety/                 # Safety or guardrail modules
+│   └─ custom/                 # Space for community-made modules
+│
+├─ docs/                       # Technical documentation
+│   ├─ architecture-en.md      # Full architecture spec (English)
+│   ├─ architecture-kr.md      # Full architecture spec (Korean)
+│   ├─ versions/               # Version history and internal notes
+│   └─ design/                 # Future design documents or diagrams
+│
+├─ LICENSE                     # MIT License
+└─ SECURITY.md                 # Security reporting policy
+```
 
 
 ---
