@@ -33,3 +33,99 @@ TITLE: 🇰🇷 Wooju∞ Mode — 공개 프롬프트 기반 고정밀 AI 모드
 ---
 
 2. 저장소 구성 📂
+
+README.md README-KR.md LICENSE SECURITY.md CODE_OF_CONDUCT.md CONTRIBUTING.md wooju_infinite_prompt.txt
+
+**docs/**
+`architecture-en.md`, `architecture-kr.md`, `VERSION-HISTORY.md`, `design.md`
+
+**examples/**
+`basic-usage.md`, `advanced-usage.md`, `prompt-injection-resistance.md`, `infinite-mode-behavior.md`, `a-mode-example.md`, `b-mode-example.md`, `c-mode-example.md`, `error-handling-scenarios.md`
+
+**modules/**
+`README.md`, `coding.md`, `finance.md`, `image_prompting.md`
+
+---
+
+3. 우주모드 공개 프롬프트의 핵심 기능 ✨
+우주모드 공개 프롬프트(wooju_infinite_prompt.txt)는 다음 기능을 제공합니다:
+
+**[정확성 모듈] 🔍**
+* 질문 범위 고정(Scope Lock)
+* 최신 웹 기반 사실 검증
+* 최소 3개 출처 교차확인
+* 🔸/🔹/⚪/❌ 증거 레이블링
+* 충돌 발생 시 Updated: 자동 정정
+
+**[논리 안정성] 🛡️**
+* Backward Checking, Alternative Path
+* 논리 그래프 일관성 검증
+* 답변 중 오류 감지 → 자동 교정
+
+**[출력 품질 유지] 📄**
+* 따뜻하고 안정된 톤 유지
+* 일관된 출력 구조 강제
+* 불일치 발생 시 자동 재작성
+
+**[세션 단위 자동 업데이트] 🔄**
+* 동일 세션 내에서는 즉시 적용
+* 세션 종료 후 개인화 요소는 초기화
+* 누구나 동일한 환경에서 재현 가능
+
+---
+
+4. 개인 우주모드 무한대와 공개 버전의 차이 📊
+
+| 기능 | 공개 버전 | 개인 무한대 버전 |
+| :--- | :--- | :--- |
+| **정확성 모듈** | 포함 | 포함 |
+| **논리 방어** | 포함 | 포함 |
+| **자동 교정** | 포함 | 포함 |
+| **장기 기억** | ❌ 없음 | ✅ 있음 |
+| **지침 자동 저장** | ❌ 없음 | ✅ 있음 |
+| **감정·행동 패턴 개인화** | ❌ 없음 | ✅ 있음 |
+| **세션 간 규칙 유지** | ❌ 없음 | ✅ 있음 |
+| **기술적 운영 규칙 적층** | ❌ 없음 | ✅ 있음 |
+| **플랫폼 변경 자동 보정** | 제한적 | 매우 강함 |
+
+---
+
+5. 왜 공개 버전을 별도로 만드는가? 💡
+개인 무한대 버전은 다음 이유로 공개 불가합니다:
+* 장기 기억이 특정 사용자에게 1:1로 맞춰져 있음
+* 감정 레이어 및 행동 패턴 조정이 포함됨
+* 교정 지침이 자동 적재되는 메타 운영 규칙이 존재함
+* 대화 이력 기반의 누적 패턴이 포함됨
+
+따라서 공개 버전은:
+* 기술적 기능
+* 정확도 향상 구조
+* 논리·증거 기반 구조
+* 안전성 필터
+이 네 가지 중심 요소만을 기반 프롬프트로 재구현한 버전입니다.
+
+---
+
+6. 예시 문서 모음 📚
+* `docs/` → 아키텍처, 디자인, 버전 기록
+* `examples/` → 실제 사용 사례
+* `modules/` → 확장 모듈(코딩·금융·이미지 등)
+
+---
+
+7. 기여 방법 🤝
+자세한 내용은 `CONTRIBUTING.md` 파일을 참고하십시오.
+
+---
+
+8. 보안 문제 제보 🚨
+보안 취약점은 `SECURITY.md` 지침을 따라 제보해 주세요.
+
+---
+
+9. 라이선스 📜
+이 프로젝트는 MIT License를 사용합니다.
+
+---
+
+End of README.md (Korean Full Version)
