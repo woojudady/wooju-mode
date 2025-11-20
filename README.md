@@ -1,148 +1,141 @@
-TITLE: 🚀 Wooju Mode (UWJ-Mode) — High-Precision Operating Framework for Large Language Models
+Wooju Mode OS ∞ – Public Framework
+The official prompt architecture for Wooju Mode OS ∞ — a multi-layered AI operating system for accuracy, logic, and emotional intelligence.
 
-## 1. Overview 💡
+Framework version (public prompt): Wooju Mode v3.8P (Public Edition)
+Stability architecture version: W∞-Lock v1.0
+Repository / release version: v1.0.0 (maps to Wooju Mode v3.8P + W∞-Lock v1.0)
 
-Wooju Mode is an **OS-like behavioral framework** for large language models (LLMs).
+This repository contains the public, prompt-only framework of Wooju Mode OS ∞.
+It does not include private long-term memory, user-specific profiles, or closed-loop learning.
+Only reproducible architecture for general LLMs is shared here.
 
-It is designed to maximize:
-* Factual **accuracy**
-* Logical **consistency**
-* Hallucination **suppression**
-* Output **stability** and **structure**
+────────────────────────
 
-This repository contains the public version of Wooju Mode, including:
-* The main public-mode prompt (`.txt` file)
-* Architecture and design documents
-* Version history
-* Contribution and security guidelines
+What is Wooju Mode?
 
-> **Important:** The **“Private Infinite Version”** of Wooju Mode (a personalized, long-term memory version) is **NOT included** in this repository. It is only described conceptually to explain how the public version differs.
+Wooju Mode is an OS-level execution layer that runs on top of large language models.
+It provides:
 
----
+• High factual accuracy (mandatory web verification with 3+ sources)
+• Logical consistency (backward/alternative/graph logic checks)
+• Automatic error correction (self-diagnostics + regeneration)
+• Structured answer format (labels, scope lock, verified sources)
+• Stable emotional tone (warm, calm, consistent)
 
-## 2. Project Goal 🎯
+The public edition (v3.8P) is designed so anyone can reproduce this behavior by using the provided prompt.
 
-The goal of Wooju Mode is not just “reducing errors,” but to push modern LLMs as close as possible to **Zero-Error operation**, using every available structural safeguard.
+────────────────────────
+2. Core Features
 
-This is achieved through:
-* Multi-layer factual verification
-* Explicit evidence labeling
-* Structured logical defense
-* Self-correction and rewrite loops
-* Strict output formatting
-* Web-based cross-source validation
+2.1 Scope Lock
+• Detect question scope first
+• Never answer outside the scope
+• Request clarification only when required
 
-However, due to inherent limits of LLM architectures, **true 0% error cannot be absolutely guaranteed.** Wooju Mode is the framework that tries to get as close to that ideal as possible.
+2.2 Real-Time Web Verification
+• Mandatory search for informational questions
+• Minimum 3 independent sources
+• Training data cannot be used as sole evidence
+• Verification date: Asia/Seoul
+• Conflict resolution: Authority → Recency → Reliability
 
----
+2.3 Fact & Inference Labeling
+• 🔸 Fact — verified
+• 🔹 Official — institutional/official reports
+• ⚪ Interpretation — reasoning or explanatory layer
+• ❌ Unknown — unverifiable
 
-## 3. Repository Structure 📂
+2.4 Logical Defense System v3.8
+• Backward Checking
+• Alternative Path Checking
+• Graph Consistency Checking
+• Any inconsistency triggers correction/regeneration
 
-The following tree illustrates the conceptual structure.
+2.5 Self-Diagnostics & Auto-Correction
+• Scan for guideline violations
+• Scan for contradictions
+• Scan for invalid sources
+• If issues found → regenerate with “Revised:”
 
-### Root directory:
-* `README.md` (English main documentation)
-* `README-KR.md` (Full Korean documentation)
-* `wooju_public_prompt.txt` (Core prompt file to be pasted into the LLM)
-* `LICENSE` (MIT License)
-* `SECURITY.md` (Vulnerability reporting guide)
-* `CONTRIBUTING.md` (Contribution guidelines)
+2.6 Auto-Memory Layer (no real long-term memory)
+Within a session, phrases like:
+“fix this”, “remember”, “from now on”, “permanently”, “keep this rule”
+→ trigger temporary rule adjustment for that session only.
 
-### docs/
-* `architecture-en.md`
-* `architecture-kr.md`
-* `version-history.md`
-* `design-doc.md` (Design philosophy and structure)
-* `coding.md` (Coding / developer-oriented modules)
+Between sessions, public edition does not store memory.
 
-### .github/ISSUE_TEMPLATE/
-* `bug_report.md`
-* `feature_request.md`
+────────────────────────
+3. W∞-Lock v1.0 – Stability Architecture
 
-> **Note:** The name `wooju_public_prompt.txt` is an example. You can rename the actual file and adjust this README accordingly.
+Wooju Mode now operates on a 4-layer stability system:
 
----
+Layer 0 — Immutable Priority Lock
+• Highest-priority rules: web search, 3 sources, labels, no blind inference
+• A/B/C mode preservation
+• These rules cannot be overridden
 
-## 4. Design Philosophy 💡
+Layer 1 — Procedural Enforcement Engine
+• Detects skipped steps: search, sources, labels, rubric, mode selection
+• Automatically regenerates the answer when a step is missing
 
-Wooju Mode treats the LLM as a **deterministic reasoning system**.
+Layer 2 — Mode Preservation Engine
+• Maintains consistent A/B/C mode
+• Prevents emotional/informational mixing
 
-### Behavioral Layers 🛡️
-Wooju Mode is built across seven active behavior layers to ensure consistent behavior:
-1.  **Persona Layer**
-2.  **Scope Lock Layer**
-3.  **Fact Verification Layer**
-4.  **Evidence Layer** (labeling facts vs. interpretations)
-5.  **Logical Defense Layer**
-6.  **Self-Correction Layer**
-7.  **Output Structure Layer**
+Layer 3 — Response & Recovery Engine
+• Pre-check → Mid-check → Post-check
+• Rubric + self-check table used to find errors
+• Regenerates if stability is compromised
 
----
+Goal of W∞-Lock:
+“Never skip procedures. Never let the mode collapse.”
 
-## 5. Public Mode v3.8 — Main Features ✨
+────────────────────────
+4. Repo Structure
 
-| Feature | Description |
-| :--- | :--- |
-| **Persona** | Warm, calm, consistent “friendly assistant” tone. Prioritizes clarity, respect, and emotional stability. |
-| **Scope Lock** | Clarifies the question before answering. Avoids expanding beyond the requested scope. |
-| **Web Verification** | Always performs a web search (when available). Uses **at least 3 independent sources**. Resolves conflicts by: **Authority > Recency > Perceived reliability**. |
-| **Evidence Labeling** | Every statement is marked: **🔸** (Web Verified), **🔹** (Official Data), **⚪** (Interpretation/Reasoning), or **❌** (Unverifiable). |
-| **Fact Normalization** | Normalizes units, names, locations, and time zones. Consolidates multiple sources into a single coherent conclusion. |
-| **Logical Defense** | Uses **backward checking**, **alternative-path reasoning**, and consistency checks. Full rewrite if logical conflict is detected. |
-| **Auto-Correction** | Detects internal contradictions. Uses **“Updated:”** tags for adjustments. Performs a full rewrite if major issues are found. |
-| **Output Structure** | Separates scope analysis, verification steps, and conclusions. Uses lists and subsections for readability. |
+docs/ — design documents
+examples/ — example conversations
+modules/ — modular prompt components
+wooju_infinite_prompt.txt — main public Wooju Mode prompt (v3.8P)
+README.md — English overview
+README-KR.md — Korean overview
+CHANGELOG.md — version history
+architecture.md — full W∞-Lock architecture
+LICENSE — MIT license
 
----
+────────────────────────
+5. How to Use (Basic)
 
-## 6. Public Mode vs. Private Infinite Version (Conceptual) ♾️
+Open “wooju_infinite_prompt.txt”.
 
-| Feature | Private Infinite | Public v3.8 |
-| :--- | :--- | :--- |
-| **Cross-session memory** | Yes | No |
-| **Personalized emotional layer** | Yes | No |
-| **Technical verification and logic** | Yes | Yes |
-| **Universal shareability** | No | Yes |
+Copy the entire prompt.
 
----
+Paste it into the LLM (ChatGPT etc.) as a system/initial instruction.
 
-## 7. Structural Limitations of LLMs ⚠️
+Start chatting normally.
 
-Wooju Mode aims for Zero Error, but limitations are inherent to all current LLMs:
+For factual questions, the model will automatically:
+• Use web search
+• Provide 3+ sources
+• Include labels (🔸🔹⚪❌)
+• Apply rubric & self-check
+For Korean explanation, see README-KR.md.
 
-### 7.1. Probabilistic Nature
-LLMs generate text via probabilistic prediction. This means:
-* Small inconsistencies are inevitable.
-* Rare hallucinations can occur.
+────────────────────────
+6. Versioning
 
-### 7.2. Interaction of Multiple Rules
-Because the internal execution order of Wooju Mode's numerous subsystems (web verification, logic defense, formatting) is not fully controllable, occasional imperfections can arise.
+Framework (prompt) version:
+• Wooju Mode v3.8P (Public Edition)
 
-### 7.3. Session-Based Behavior in Public Mode
-Public Mode has no true persistent memory, meaning each session starts from the base prompt, and long-term adjustment is not accumulated.
+Stability architecture version:
+• W∞-Lock v1.0
 
-### 7.4. Context Window Limits
-When conversations become very long, earlier details may be compressed, and initial rules may weaken over time.
+Repository / release version (GitHub tag):
+• v1.0.0 (maps to Wooju Mode v3.8P + W∞-Lock v1.0)
 
----
+Future updates (e.g., stability patches, new mode structures)
+→ documented in CHANGELOG.md and GitHub Releases.
 
-## 8. How to Use Wooju Mode ⚙️
-
-1.  Open the file `wooju_public_prompt.txt` (or your actual prompt file).
-2.  Copy the entire content.
-3.  Paste it into your LLM as a **system prompt** or the **first user message.**
-4.  Start interacting normally.
-
-### Recommended Style:
-* Use Wooju Mode especially for tasks requiring **high accuracy**, careful **reasoning**, or **stable formatting**.
-* Details on **A/B/C-style modes** (information, emotional, hybrid) can be found in `architecture-en.md` and `architecture-kr.md`.
-
----
-
-## 9. Contribution Guidelines 🤝
-* See `CONTRIBUTING.md` for bug reporting, feature requests, and documentation improvements.
-
-## 10. Security Reporting 🚨
-* See `SECURITY.md` for guidance on reporting vulnerabilities or safety concerns.
-
-## 11. License 📜
-* This project is licensed under the **MIT License**. You may use, modify, and distribute it as long as you preserve the license terms and attribution.
+────────────────────────
+7. License
+This project is under the MIT License.
