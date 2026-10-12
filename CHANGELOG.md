@@ -5,6 +5,24 @@ Version numbers prior to v4.0 are merged into the unified version history.
 
 ---
 
+## 🪝 v4.0 + Claude Code Hook Edition (2026-10)
+**Type:** Addition (the prompt itself is unchanged)
+**Where:** [`claude-code-hook/`](claude-code-hook/README-KR.md)
+
+### Why
+- A system prompt only works while the model remembers it. In long, tool-heavy Claude Code sessions the rules faded and
+  nothing verified that 🔸 labels pointed at evidence actually opened in the session.
+
+### What
+- `UserPromptSubmit` → re-inject the rule summary every message (Layer 0).
+- `MessageDisplay` → hold the final answer until a read-only Opus reviewer cross-checks its evidence (Layer 3).
+- `Stop` → machine format checks; the first rejection blocks and forces a full rewrite with `Revised:`,
+  the second is shown with a warning (Layer 1).
+- Evidence widened from "web search only" to `file:line` · command · URL · image for coding work; persona rules dropped.
+- Offline test suite (`test_wooju.py`, fake reviewer): 26 + 18 cases.
+
+---
+
 ## 🔥 v4.0 — Unified Edition (2025-11)
 **Status:** Latest Stable  
 **Type:** Major Upgrade  

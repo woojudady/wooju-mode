@@ -172,6 +172,11 @@ W∞-Lock은 v4.0의 가장 큰 차별점이며,
 - B 모드 → 감정/대화  
 - C 모드 → 철학/해석  
 
+### Claude Code 에서 훅으로 쓰기 (2026-10)
+프롬프트는 모델이 잊으면 안 돕니다. Claude Code(CLI)에서는 규칙을 **훅**으로 강제할 수 있습니다 —
+매 메시지 규칙 주입, 화면에 나가기 전 근거 검토, 반려되면 전체 재작성.
+왜 · 어떻게 바꿨는지와 설치 방법: [`claude-code-hook/README-KR.md`](claude-code-hook/README-KR.md)
+
 # 8. 기여 안내 🤝
 
 - 버그/이슈 신고: GitHub Issues

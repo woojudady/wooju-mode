@@ -182,6 +182,11 @@ The table below is only for conceptual comparison.
 - **B-Mode:** For emotional/supportive conversations  
 - **C-Mode:** For philosophical or boundary questions  
 
+### Using it in Claude Code via hooks (2026-10)
+A prompt only works while the model remembers it. In Claude Code (CLI) the rules can be enforced with **hooks** —
+rule re-injection every message, evidence review before the answer is shown, full rewrite on rejection.
+Why and how, plus install steps: [`claude-code-hook/`](claude-code-hook/README.md)
+
 # 8. Contribution 🤝
 Contributions are welcome:
 
