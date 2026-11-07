@@ -19,8 +19,8 @@ def tr(name, reply, tools=(), image=False):
     rows.append({"type":"assistant","message":{"content":[{"type":"text","text":reply}]}})
     p=f"wtest/{name}.jsonl"; open(p,"w",encoding="utf-8").write("\n".join(json.dumps(r,ensure_ascii=False) for r in rows))
     return p
-read=("Read",{"file_path":"C:/kiwoom_bot/tools/hook_gate.py","offset":30,"limit":20})
-other=("Read",{"file_path":"C:/kiwoom_bot/config.py"})
+read=("Read",{"file_path":"E:/kiwoom_bot/tools/hook_gate.py","offset":30,"limit":20})
+other=("Read",{"file_path":"E:/kiwoom_bot/config.py"})
 grep=("Bash",{"command":"grep -n def tools/hook_gate.py"})
 web=("WebFetch",{"url":"https://github.com/woojudady/wooju-mode"})
 OK_A="범위: 훅 줄 수\n모드: A\n검증: Read 로 확인\n🔸 hook_gate.py 는 693줄이다 [근거: hook_gate.py:41]\n⚪ 대략 700줄이다(가정: 반올림)\n결론: 위 확인대로다."

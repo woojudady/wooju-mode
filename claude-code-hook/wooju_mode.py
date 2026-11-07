@@ -64,6 +64,16 @@ RULES = """\
 6. 검토에서 반려되면 고친 부분만이 아니라 **답 전체를 다시** 쓴다(반려된 답은 화면에 안 나갔다).
    맨 위 `범위:` 줄 바로 아래에 `Revised: <무엇을 고쳤나 한 줄>` 을 붙인다.
    같은 질문에서 두 번째 반려부터는 막지 않고, 검토자 지적을 경고로 붙여 그대로 보인다.
+7. 넓은 단정(다 · 전부 · 모두 · 없다 · 아니다 · 못 한다 · 그대로 · 같다)은 그 범위를 전부 확인한 뒤에만 쓴다.
+   일부만 봤으면 본 범위를 같이 적는다(예: '참고서에서는 못 찾았다 · 원본은 안 봤다').
+"""
+# 지난 답이 다시 쓴 뒤에도 걸려 경고와 함께 나갔으면, 다음 질문 때 이 글을 규칙 뒤에 붙인다(11/7 사용자 결정 —
+# 경고는 사용자 화면에만 떠서 모델이 그 잘못을 고치지 않고 넘어가던 구멍).
+CARRY_RULE = """\
+[우주모드 — 지난 답 정정 먼저] 지난 답이 다시 쓴 뒤에도 검토에서 걸려 경고와 함께 사용자에게 나갔다.
+지적: {reason}
+→ 이번 답의 `모드:` 줄 바로 아래에 `정정: <지난 답의 무엇이 틀렸고 실제로는 무엇인지>` 를 먼저 쓴다(필요하면 도구로 다시 확인).
+  그다음 이번 질문에 답한다. 검토자가 정정이 제대로 됐는지 본다.
 """
 
 LABELS = "🔸🔹⚪❌"
@@ -82,7 +92,16 @@ HEAD_RE = {
     "verify": re.compile(r"^\W*(검증|verification)\W*[:：]", re.I | re.M),
     "concl": re.compile(r"^\W*(결론|conclusion)\W*[:：]", re.I | re.M),
     "short": re.compile(r"^\W*출처\s*부족\W*[:：]", re.M),
+    "fix": re.compile(r"^\W*(정정|correction)\W*[:：]", re.I | re.M),
 }
+# 근거 검사에서 빼는 머리 · 꼬리 줄(그 안에 🔸 글자가 나와도 주장 줄이 아니다 — 'Revised: … 🔸 근거를 달았다')
+META_LINE_RE = re.compile(r"^\W*(범위|scope|모드|mode|revised|updated|검증|verification|결론|conclusion|정정|correction)\W*[:：]",
+                          re.I)
+CODE_SPAN_RE = re.compile(r"`[^`\n]*`")
+PATH_TOKEN_RE = re.compile(r"\S*[\\/]\S*")       # 경로 조각 후보 — 글자가 섞인 것만 뺀다(79/107 같은 숫자 비율은 남긴다)
+ID_NUM_RE = re.compile(r"(?<![\w.])0\d{2,}(?![\w.])")  # 0003 처럼 0 으로 시작하는 번호
+# 계산식 표시 — '계산'은 '계산: · 계산은 · 계산식' 만(‘고친 계산으로’ 같은 보통 문장은 아니다 · 11/7 재생 비교에서 잡음)
+CALC_RE = re.compile(r"=|≈|÷|×|가정|계산\s*(?:[:：은]|식)")
 
 
 # ── 대화 기록 읽기 ────────────────────────────────────────────────────────────
@@ -248,13 +267,23 @@ def _file_line_ok(path: str, line: int, sess: Session, tool_io: str) -> bool:
 
 def _evidence_of(line: str) -> str:
     m = re.search(r"\[근거\s*[:：](.*?)\]", line)
+    if m:
+        return m.group(1)
+    # '🔸 근거: 메모 … [MEMORY.md:11]' 처럼 대괄호 없이 쓴 근거도 인정한다(11/7 — 근거가 있는데 형식만으로 경고됨)
+    m = re.search(r"근거\s*[:：]\s*(\S.*)$", line)
     return m.group(1) if m else ""
 
 
-def _nums3(ln: str) -> list[str]:
-    """줄의 세 자리 이상 숫자(근거 · 파일:줄 · URL 안의 숫자는 뺀다). 두 자리는 긴 출력 어디에나 있어 대조 의미가 없다."""
+def _nums3(ln: str, loose: bool = False) -> list[str]:
+    """줄의 세 자리 이상 숫자(근거 · 파일:줄 · URL 안의 숫자는 뺀다). 두 자리는 긴 출력 어디에나 있어 대조 의미가 없다.
+    loose=True(라벨 없음 · ⚪ 계산식 검사용): `코드` · 글자 섞인 경로 조각 · 0 으로 시작하는 번호(0003) 안의 숫자도 뺀다
+    — 11/7 통과한 답 경고의 가장 큰 몫이 이것이었다. 🔸 숫자 대조(loose=False)는 그대로 엄격하게 둔다."""
     body = re.sub(r"\[근거\s*[:：].*?\]", "", ln)
     body = FILE_LINE_RE.sub("", URL_RE.sub("", body))
+    if loose:
+        body = PATH_TOKEN_RE.sub(lambda m: "" if re.search(r"[A-Za-z가-힣_~]", m.group()) else m.group(),
+                                 CODE_SPAN_RE.sub("", body))
+        body = ID_NUM_RE.sub("", body)
     return [m.group() for m in NUM_RE.finditer(body) if len(re.sub(r"\D", "", m.group())) >= 3]
 
 
@@ -284,11 +313,13 @@ def check_files(text: str, sess: Session) -> list[str]:
     return [f"{p}:{n}" for p, n in FILE_LINE_RE.findall(text) if not _file_line_ok(p, int(n), sess, tio)]
 
 
-def check(text: str, sess: Session, turn_calls: int) -> list[str]:
+def check(text: str, sess: Session, turn_calls: int, carry: str = "") -> list[str]:
     errs: list[str] = []
     body = FENCE_RE.sub("", text)
     if sess.wooju_feedback and not re.search(r"\b(Updated|Revised)\s*[:：]", body):
         errs.append("우주모드 반려 뒤 다시 쓴 답에 `Updated:` / `Revised:` 표시가 없다.")
+    if carry and not HEAD_RE["fix"].search(body):
+        errs.append("지난 답이 경고와 함께 나갔는데 이번 답에 `정정:` 줄이 없다.")
     mode_m = HEAD_RE["mode"].search(body)
     if not HEAD_RE["scope"].search(body):
         errs.append("`범위:` 줄이 없다 (Scope Lock).")
@@ -314,18 +345,18 @@ def check(text: str, sess: Session, turn_calls: int) -> list[str]:
 
     # 라벨 없는 줄은 검사를 빠져나간다 — 세 자리 이상 숫자가 든 줄은 라벨 필수
     unlabeled = [ln.strip()[:50] for ln in lines
-                 if _nums3(ln) and not any(ch in ln for ch in LABELS)
+                 if _nums3(ln, loose=True) and not any(ch in ln for ch in LABELS)
                  and not (HEAD_RE["scope"].match(ln) or HEAD_RE["mode"].match(ln))]
     if unlabeled:
         errs.append("세 자리 이상 숫자가 든 줄에 라벨이 없다: " + " / ".join(unlabeled[:3]))
     # ⚪ 로 숫자 대조를 피하지 못하게 — 계산식이나 가정을 밝힌다
     loose = [ln.strip()[:50] for ln in lines
-             if "⚪" in ln and "🔸" not in ln and "🔹" not in ln and _nums3(ln)
-             and not re.search(r"=|가정", ln)]
+             if "⚪" in ln and "🔸" not in ln and "🔹" not in ln and _nums3(ln, loose=True)
+             and not CALC_RE.search(ln)]
     if loose:
         errs.append("⚪ 줄의 세 자리 이상 숫자에 계산식(=)이나 `가정:` 이 없다: " + " / ".join(loose[:3]))
 
-    claim = [ln for ln in lines if "🔸" in ln or "🔹" in ln]
+    claim = [ln for ln in lines if ("🔸" in ln or "🔹" in ln) and not META_LINE_RE.match(ln)]
     if claim and sess.tool_calls == 0:
         errs.append("🔸/🔹 를 썼는데 이 세션에서 도구를 한 번도 안 썼다 — 확인한 게 없으면 ⚪/❌.")
     no_ev = [ln.strip()[:60] for ln in claim if not _evidence_of(ln)]
@@ -371,6 +402,9 @@ answer 는 아직 사용자에게 보이지 않은 최종 답이다. transcript_
 
 1) [반려 뒤 다시 쓴 답] previous_rejection 이 비어 있지 않으면, 이 answer 는 그 반려를 받고 다시 쓴 답이다.
    'Revised:' 줄이 없으면 지적한다. previous_rejection 이 짚은 문제가 실제로 고쳐졌는지도 본다.
+1-2) [지난 답 정정] previous_warning 이 비어 있지 않으면, 지난 턴 답이 그 지적을 안고 경고와 함께 사용자에게 나갔다.
+   answer 에 '정정:' 줄이 없거나, 정정이 그 지적의 핵심(틀린 숫자 · 단정 · 빠진 근거)을 바로잡지 못했으면 지적한다.
+   정정 내용도 3) 처럼 근거와 대조한다.
 
 2) [라벨 없는 사실 주장 — 도구를 쓰지 말고 글만 읽는다]
    라벨(🔸🔹⚪❌)이 없는 줄과 ⚪ 줄 가운데, 다음을 확인된 사실처럼 단정하는 줄을 찾는다:
@@ -379,6 +413,8 @@ answer 는 아직 사용자에게 보이지 않은 최종 답이다. transcript_
          표의 머리줄 · 구분줄 / 코드 블록 / 사용자가 한 말을 되풀이한 것.
    있으면 지적: "라벨 없는 사실 주장: <줄 요약> — 🔸/🔹 근거를 달거나 ⚪(해석) · ❌(확인 못 함)로 밝힐 것".
    ⚪ 줄인데 추론이 아니라 확인된 사실처럼 단정하면 같은 식으로 지적한다.
+   특히 넓은 단정(다 · 전부 · 모두 · 없다 · 아니다 · 못 한다 · 그대로 · 같다)은 라벨과 상관없이,
+   근거가 그 범위 전체를 덮는지 본다. 일부만 확인하고 전체처럼 말하면 지적: "넓은 단정: <줄 요약> — 확인한 범위는 <…>뿐".
 
 3) [근거 대조] 🔸/🔹 줄이 3개 이상이거나, 세 자리 이상 숫자가 든 🔸 줄이 있을 때만 한다.
    🔸/🔹 줄마다 [근거: …] 를 직접 대조한다.
@@ -446,6 +482,55 @@ def _mark_prompt(data: dict) -> None:
         datetime.now().isoformat(timespec="seconds"), encoding="utf-8")
 
 
+# ── 경고 이어받기 (11/7) ─────────────────────────────────────────────────────────
+# 2번째 반려(warned)는 막지 않고 경고를 붙여 보인다 — 그 경고는 사용자 화면에만 떠서 모델이 잘못을 고치지 않았다.
+# warned 판정 → pending 파일 → 다음 질문의 inject 가 규칙 뒤에 '정정 먼저' 를 붙이고 carry 파일로 옮긴다
+# → 그 턴의 검토자와 형식 검사가 '정정:' 줄을 본다. 다음 질문에 새 pending 이 없으면 carry 는 지운다(한 턴만).
+
+def _pending_file(session: str) -> Path:
+    return STATE / f"pending_{_sid(session)}.json"
+
+
+def _carry_file(session: str) -> Path:
+    return STATE / f"carry_{_sid(session)}.json"
+
+
+def _write_json(p: Path, obj: dict) -> None:
+    STATE.mkdir(exist_ok=True)
+    tmp = p.with_suffix(".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, p)
+
+
+def _read_json(p: Path) -> dict:
+    try:
+        v = json.loads(p.read_text(encoding="utf-8"))
+        return v if isinstance(v, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def carry_reason(session: str) -> str:
+    """이번 턴에 정정해야 할 지난 경고(없으면 '')."""
+    return str(_read_json(_carry_file(session)).get("reason") or "")
+
+
+def take_pending(session: str) -> str:
+    """질문 때 부른다: 지난 답의 경고를 이번 턴 carry 로 옮기고 그 지적을 돌려준다. 없으면 carry 를 지우고 ''."""
+    pend = _read_json(_pending_file(session))
+    reason = str(pend.get("reason") or "")
+    if reason:
+        _write_json(_carry_file(session), {"t": datetime.now().isoformat(timespec="seconds"), "reason": reason,
+                                           "from": pend.get("t")})
+    else:
+        _carry_file(session).unlink(missing_ok=True)
+    _pending_file(session).unlink(missing_ok=True)
+    return reason
+
+
 REJECTED = ("rejected", "warned")   # rejected = 1번째 반려(막고 다시 쓰게) · warned = 2번째부터(경고 붙여 표시)
 
 
@@ -493,6 +578,8 @@ def get_verdict(text: str, data: dict) -> dict:
         rec = {"t": datetime.now().isoformat(timespec="seconds"), "turn": data.get("turn_id"), "reason": reason,
                "status": status}
         _save_verdict(session, h, rec)
+        if status == "warned":      # 경고와 함께 나간다 → 다음 질문 때 정정하게 남긴다
+            _write_json(_pending_file(session), {"t": rec["t"], "reason": reason})
         return rec
     finally:
         lock.unlink(missing_ok=True)
@@ -515,7 +602,8 @@ def review(answer: str, data: dict, previous: str) -> tuple[bool | None, str]:
     exe = shutil.which("claude")
     if not exe:
         return None, "claude 명령을 찾지 못함"
-    args = {"answer": answer, "transcript_path": data.get("transcript_path"), "previous_rejection": previous}
+    args = {"answer": answer, "transcript_path": data.get("transcript_path"), "previous_rejection": previous,
+            "previous_warning": carry_reason(data.get("session_id") or "")}
     prompt = REVIEW_PROMPT.replace("$ARGUMENTS", json.dumps(args, ensure_ascii=False))
     dirs = [d for d in {data.get("cwd"), str(Path(data.get("transcript_path") or ".").parent)} if d]
     cmd = [exe, "-p", "--model", REVIEW_MODEL, "--allowedTools", "Read", "Grep", "Glob",
@@ -592,7 +680,8 @@ def _review_and_show(text: str, data: dict) -> int:
     if v.get("status") == "rejected":
         return _show("⏳ [우주모드] 검토에서 반려되어 고친 답을 준비합니다.\n")
     if v.get("status") == "warned":
-        return _show(f"⚠ [우주모드] 다시 쓴 답도 검토에서 걸렸습니다. 아래 지적 부분은 틀렸을 수 있습니다.\n"
+        return _show(f"⚠ [우주모드] 다시 쓴 답도 검토에서 걸렸습니다. 아래 지적 부분은 틀렸을 수 있습니다"
+                     f"(다음 질문 때 Claude 가 먼저 정정합니다).\n"
                      f"지적: {v.get('reason')}\n\n{text}")
     return _show(f"⚠ [우주모드] 검토를 하지 못했습니다({v.get('reason')}) — 아래는 검토되지 않은 답입니다.\n\n{text}")
 
@@ -724,23 +813,24 @@ def do_check(data: dict, warn: bool) -> int:
     # 검토 판정 — 표시 훅보다 먼저 왔으면 여기서 검토하고, 검토 중이면 기다린다.
     # 1번째 반려(rejected)는 경고 모드와 무관하게 다시 쓰게 막고, 2번째부터(warned)는 알리기만 한다.
     notes, status = [], None
+    carry = carry_reason(data.get("session_id") or "")
     if _needs_review(text):
         v = get_verdict(text, data)
         status = v.get("status")
         if status == "rejected":
             _log({"t": datetime.now().isoformat(timespec="seconds"), "session": data.get("session_id"),
                   "cwd": data.get("cwd"), "retry": bool(data.get("stop_hook_active")), "verdict": status,
-                  "errs": check(text, sess, calls)})
+                  "errs": check(text, sess, calls, carry)})
             print("[우주모드 검토] 이 답은 검토에서 반려되어 사용자에게 보이지 않았다. 지적:\n" + v.get("reason", "")
                   + "\n→ 고친 부분만이 아니라 답 전체를 다시 쓸 것. `범위:` 줄 아래에 `Revised: <무엇을 고쳤나>`.",
                   file=sys.stderr)
             return 2
         if status == "warned":
-            notes.append("[우주모드] 다시 쓴 답도 검토에서 걸려 경고를 붙여 표시했다(2번째 반려 — 막지 않음). 지적: "
-                         + (v.get("reason") or ""))
+            notes.append("[우주모드] 다시 쓴 답도 검토에서 걸려 경고를 붙여 표시했다(2번째 반려 — 막지 않음). "
+                         "다음 질문 때 Claude 가 먼저 정정한다. 지적: " + (v.get("reason") or ""))
         elif status != "ok":
             notes.append(f"[우주모드] 검토를 하지 못했다: {v.get('reason')}"[:200])
-    errs = check(text, sess, calls)
+    errs = check(text, sess, calls, carry)
     _log({"t": datetime.now().isoformat(timespec="seconds"), "session": data.get("session_id"),
           "cwd": data.get("cwd"), "retry": bool(data.get("stop_hook_active")), "verdict": status, "errs": errs})
     if errs and not (warn or data.get("stop_hook_active")):
@@ -811,11 +901,14 @@ def main() -> int:
         except Exception:  # noqa: BLE001 — 표시 훅이 죽으면 원래 글이 보인다(공식 동작)
             return 0
     if cmd == "inject":
+        carry = ""
         try:
-            _mark_prompt(_load_stdin())
+            data = _load_stdin()
+            _mark_prompt(data)
+            carry = take_pending(data.get("session_id") or "")
         except Exception:  # noqa: BLE001 — 규칙 주입은 어떤 경우에도 한다
             pass
-        print(RULES)
+        print(RULES + (CARRY_RULE.format(reason=carry) if carry else ""))
         return 0
     if cmd == "install":
         return install()
